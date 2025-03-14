@@ -69,11 +69,11 @@ export default function Search() {
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4">
                     {videos.map((video) => (
-                        <div key={`${video.id.videoId}-${video.snippet.title}`} className="md:rounded-lg overflow-hidden overflow-hidden group">
+                        <div key={`${video.id.videoId}-${video.snippet.title}`} className="md:rounded-lg overflow-hidden duration-200 hover:bg-gray-200">
                             <div className="relative aspect-video w-full md:rounded-lg overflow-hidden">
                                 <Image  src={video.snippet.thumbnails.high.url}  alt={video.snippet.title}  layout="fill"  objectFit="cover"  className="w-full h-full" />
                             </div>
-                            <div className="p-4 md:p-2 group-hover:bg-gray-200 md:hover:bg-transparent duration-200"><h3 className="text-lg font-semibold line-clamp-2">{decodeHtmlEntity(video.snippet.title)}</h3></div>
+                            <div className="p-4 md:p-2"><h3 className="text-lg font-semibold line-clamp-2">{decodeHtmlEntity(video.snippet.title)}</h3></div>
                         </div>
                     ))}
                 </div>
