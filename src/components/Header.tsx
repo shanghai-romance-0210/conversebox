@@ -81,8 +81,8 @@ export default function Header() {
                                 {showMenu && (
                                     <div className="absolute right-0 mt-2 w-64 bg-white border border-gray-200 shadow-md rounded-lg p-2">
                                         <div>
-                                            <p className="font-semibold">ここにユーザー名</p>
-                                            <p className="text-gray-400 text-sm line-clamp-1">{user.email}</p>
+                                            <p>ここにユーザー名</p>
+                                            <p className="text-sm text-gray-400 line-clamp-1">{user.email}</p>
                                         </div>
                                         <div className="border-t border-gray-200 my-2" />
                                         <Button onClick={handleLogout} variant="text" className="font-normal w-full text-left">
