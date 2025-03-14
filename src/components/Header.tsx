@@ -6,6 +6,8 @@ import { auth } from "@/lib/firebaseConfig";
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, User } from "firebase/auth";
 import { FiX } from "react-icons/fi";
 import { FaUser } from "react-icons/fa"; // Import FaUser icon
+import { doc, getDoc } from "firebase/firestore"; // Import Firestore functions
+import { db } from "@/lib/firebaseConfig"; // Import Firebase DB configuration
 
 export default function Header() {
     const [showModal, setShowModal] = useState(false);
@@ -14,21 +16,39 @@ export default function Header() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [user, setUser] = useState<User | null>(null);
-    const [showMenu, setShowMenu] = useState(false);  // State to toggle menu visibility
+    const [showMenu, setShowMenu] = useState(false); // State to toggle menu visibility
+    const [username, setUsername] = useState(""); // State to hold the username
 
     useEffect(() => {
         // Set up Firebase listener to track user authentication state
         const unsubscribe = auth.onAuthStateChanged((currentUser) => {
             setUser(currentUser); // If user is logged in, store user info
+            if (currentUser) {
+                fetchUsername(currentUser.uid); // Fetch username if the user is logged in
+            } else {
+                setUsername(""); // Clear username if user is logged out
+            }
         });
 
         return () => unsubscribe(); // Clean up listener on component unmount
     }, []);
 
+    // Fetch username from Firestore based on user UID
+    const fetchUsername = async (uid: string) => {
+        const userDocRef = doc(db, "users", uid); // Reference to the user's document
+        const userDoc = await getDoc(userDocRef);
+
+        if (userDoc.exists()) {
+            setUsername(userDoc.data().username); // Set the username from Firestore
+        } else {
+            setUsername(""); // Default if no username is found
+        }
+    };
+
     const handleLogin = async () => {
         try {
             await signInWithEmailAndPassword(auth, email, password);
-            setShowModal(false);  // Close modal on successful login
+            setShowModal(false); // Close modal on successful login
         } catch (error: unknown) {
             if (error instanceof Error) {
                 setError(error.message);
@@ -41,7 +61,7 @@ export default function Header() {
     const handleSignUp = async () => {
         try {
             await createUserWithEmailAndPassword(auth, email, password);
-            setShowModal(false);  // Close modal on successful signup
+            setShowModal(false); // Close modal on successful signup
         } catch (error: unknown) {
             if (error instanceof Error) {
                 setError(error.message);
@@ -53,13 +73,13 @@ export default function Header() {
 
     const handleLogout = async () => {
         try {
-            await signOut(auth);  // Log out the user
-            setError("");  // Clear any previous error
+            await signOut(auth); // Log out the user
+            setError(""); // Clear any previous error
         } catch (error: unknown) {
             if (error instanceof Error) {
-                setError(`ログアウトに失敗しました: ${error.message}`);  // Set error message
+                setError(`ログアウトに失敗しました: ${error.message}`); // Set error message
             } else {
-                setError("ログアウトに失敗しました");  // Default error message
+                setError("ログアウトに失敗しました"); // Default error message
             }
         }
     };
@@ -75,21 +95,21 @@ export default function Header() {
                     {user ? (
                         <>
                             <div className="relative">
-                                <button  onClick={() => setShowMenu(!showMenu)} className="flex items-center justify-center rounded-full h-10 w-10 aspect-square bg-purple-200 cursor-pointer text-purple-400">
+                                <button onClick={() => setShowMenu(!showMenu)} className="flex items-center justify-center rounded-lg h-10 w-10 aspect-square bg-purple-200 cursor-pointer text-purple-400">
                                     <FaUser className="text-xl" />
                                 </button>
-                                {showMenu && (
-                                    <div className="absolute right-0 mt-2 w-64 bg-white border border-gray-200 shadow-md rounded-lg p-2">
-                                        <div>
-                                            <p>ここにユーザー名</p>
-                                            <p className="text-sm text-gray-400 line-clamp-1">{user.email}</p>
-                                        </div>
-                                        <div className="border-t border-gray-200 my-2" />
-                                        <Button onClick={handleLogout} variant="text" className="font-normal w-full text-left">
-                                            ログアウト
-                                        </Button>
+                                <div className={`absolute right-0 mt-2 w-64 bg-white border border-gray-200 shadow-lg rounded-lg p-2 transform transition-all duration-300 ease-in-out ${showMenu ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}>
+                                    <div>
+                                        <p>{username ? username : "ユーザー名が設定されていません"}</p>
+                                        <p className="text-sm text-gray-400 line-clamp-1">{user.email}</p>
                                     </div>
-                                )}
+                                    <div className="border-t border-gray-200 my-2" />
+                                    <Link href="/settings">
+                                        <p className="px-4 py-2 rounded-lg duration-200 hover:bg-gray-200">設定</p>
+                                    </Link>
+                                    <div className="border-t border-gray-200 my-2" />
+                                    <Button onClick={handleLogout} variant="text" className="font-normal w-full text-left">ログアウト</Button>
+                                </div>
                             </div>
                         </>
                     ) : (
