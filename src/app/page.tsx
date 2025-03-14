@@ -16,9 +16,9 @@ export default function Home() {
         <div className="md:w-1/2 flex flex-col justify-center md:mr-8">
           <h2 className="text-5xl font-semibold drop-shadow-xs">あなたの好きな動画で、さまざまな言語に<span className="bg-gradient-to-b from-purple-400 to-purple-600 bg-clip-text text-transparent">流暢</span>になりましょう！</h2>
           <p className="text-gray-400 mt-4 text-lg">ConverseBoxを使えば、YouTubeを利用してさまざまな言語で日常的な会話を楽しむことができます。</p>
-          <div className="mt-8 flex space-x-2">
-            <Button className="w-full">登録</Button>
-            <Button className="w-full" variant="secondary">ログイン</Button>
+          <div className="mt-8 flex flex-col md:flex-row space-y-2 md:space-x-2">
+            <Button className="md:w-1/2">登録</Button>
+            <Button className="md:w-1/2" variant="secondary">ログイン</Button>
           </div>
         </div>
         <div className="md:w-1/2 hidden md:flex">
