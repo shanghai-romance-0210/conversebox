@@ -14,15 +14,15 @@ export default function Footer() {
             <div>
                 <h3 className="font-semibold text-lg">About</h3>
                 <div className="mt-4 space-y-0.5 flex flex-col">
-                    <Link href="#" className="hover:underline"><p>Link1</p></Link>
-                    <Link href="#" className="hover:underline"><p>Link2</p></Link>
+                    <Link href="#" className="hover:underline"><p>リンク1</p></Link>
+                    <Link href="#" className="hover:underline"><p>リンク2</p></Link>
                 </div>
             </div>
             <div>
                 <h3 className="font-semibold text-lg">Legal</h3>
                 <div className="mt-4 space-y-0.5 flex flex-col">
-                    <Link href="#" className="hover:underline"><p>Terms of Service</p></Link>
-                    <Link href="#" className="hover:underline"><p>Privacy Policy</p></Link>
+                    <Link href="#" className="hover:underline"><p>利用規約</p></Link>
+                    <Link href="#" className="hover:underline"><p>プライバシーポリシー</p></Link>
                 </div>
             </div>
         </div>
