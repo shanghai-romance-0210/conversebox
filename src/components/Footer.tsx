@@ -16,15 +16,13 @@ export default function Footer() {
                 <div className="mt-4 space-y-0.5 flex flex-col">
                     <Link href="#" className="hover:underline"><p>Link1</p></Link>
                     <Link href="#" className="hover:underline"><p>Link2</p></Link>
-                    <Link href="#" className="hover:underline"><p>Link3</p></Link>
                 </div>
             </div>
             <div>
                 <h3 className="font-semibold text-lg">Legal</h3>
                 <div className="mt-4 space-y-0.5 flex flex-col">
-                    <Link href="#" className="hover:underline"><p>Link1</p></Link>
-                    <Link href="#" className="hover:underline"><p>Link2</p></Link>
-                    <Link href="#" className="hover:underline"><p>Link3</p></Link>
+                    <Link href="#" className="hover:underline"><p>Terms of Service</p></Link>
+                    <Link href="#" className="hover:underline"><p>Privacy Policy</p></Link>
                 </div>
             </div>
         </div>
