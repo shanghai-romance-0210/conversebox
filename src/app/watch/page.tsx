@@ -65,13 +65,12 @@ export default function Watch() {
 
             <div className="md:container mx-auto w-full p-8 md:flex">
                 <div className="md:w-1/2">
-                    {/* SuspenseコンポーネントでVideoContentをラップ */}
                     <Suspense fallback={<div>Loading video...</div>}>
                         <VideoContent />
                     </Suspense>
                 </div>
-                <div className="md:w-1/2">
-                    {/* こっちに動画の時間とリンクした字幕を表示したいです。 */}
+                <div className="md:w-1/2 mt-8 md:mt-0 md:p-8">
+                    <p className="text-5xl font-semibold text-gray-400">ここに字幕を表示させたいです。</p>
                 </div>
             </div>
 
