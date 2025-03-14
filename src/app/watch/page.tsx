@@ -49,7 +49,7 @@ function VideoContent() {
             {videoDetails && (
                 <div className="mt-4">
                     <h2 className="text-2xl font-semibold">{videoDetails.title}</h2>
-                    <div className="mt-4 p-4 rounded-lg bg-white border border-gray-200 border-dashed h-32 overflow-y-auto duration-200 overflow-hidden">
+                    <div className="mt-4 p-4 rounded-lg bg-white border border-gray-200 border-dashed h-16 md:h-32 overflow-y-auto duration-200 overflow-hidden">
                         <p dangerouslySetInnerHTML={{ __html: videoDetails.description.replace(/\n/g, '<br/>') }} />
                     </div>
                 </div>
