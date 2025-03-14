@@ -6,6 +6,7 @@ import { FiSearch } from 'react-icons/fi';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Button from '@/components/ui/Button';
+import Link from 'next/link';
 
 interface Video {
   id: {
@@ -70,10 +71,12 @@ export default function Search() {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4">
                     {videos.map((video) => (
                         <div key={`${video.id.videoId}-${video.snippet.title}`} className="md:rounded-lg overflow-hidden">
-                            <div className="relative aspect-video w-full md:rounded-lg overflow-hidden">
-                                <Image  src={video.snippet.thumbnails.high.url}  alt={video.snippet.title}  layout="fill"  objectFit="cover"  className="w-full h-full" />
-                            </div>
-                            <div className="p-4 md:p-2"><h3 className="text-lg font-semibold line-clamp-2">{decodeHtmlEntity(video.snippet.title)}</h3></div>
+                            <Link href={`/watch?v=${video.id.videoId}`}>
+                                <div className="relative aspect-video w-full md:rounded-lg overflow-hidden">
+                                    <Image  src={video.snippet.thumbnails.high.url}  alt={video.snippet.title}  layout="fill"  objectFit="cover"  className="w-full h-full" />
+                                </div>
+                                <div className="p-4 md:p-2"><h3 className="text-lg font-semibold line-clamp-2">{decodeHtmlEntity(video.snippet.title)}</h3></div>
+                            </Link>
                         </div>
                     ))}
                 </div>

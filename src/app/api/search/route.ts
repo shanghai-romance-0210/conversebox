@@ -1,3 +1,4 @@
+// src/app/api/search/route.ts
 import { NextResponse } from 'next/server';
 
 const API_KEY = "AIzaSyBjQn6CRPP_zhXFAE1RxGtmuG6h-vbjh10";
