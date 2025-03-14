@@ -31,7 +31,7 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <button
       onClick={onClick}
-      className={`${sizeClasses[size]} ${variantClasses[variant]} ${className} rounded-lg font-semibold active:scale-90 duration-200 select-none cursor-pointer`}
+      className={`${sizeClasses[size]} ${variantClasses[variant]} ${className} whitespace-nowrap rounded-lg font-semibold active:scale-90 duration-200 select-none cursor-pointer`}
     >
       {children}
     </button>
