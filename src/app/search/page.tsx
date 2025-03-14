@@ -65,11 +65,11 @@ export default function Search() {
 
         <div className="md:w-3/4 mx-auto py-8">
             {videos.length === 0 ? (
-                <Image src="/amico3.svg" alt="No videos" width={100} height={100} className="w-1/3 mx-auto select-none opacity-75" />
+                <Image src="/amico3.svg" alt="No videos" width={100} height={100} className="md:w-1/3 mx-auto select-none opacity-75" />
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4">
                     {videos.map((video) => (
-                        <div key={`${video.id.videoId}-${video.snippet.title}`} className="md:rounded-lg overflow-hidden duration-200 hover:bg-gray-200">
+                        <div key={`${video.id.videoId}-${video.snippet.title}`} className="md:rounded-lg overflow-hidden">
                             <div className="relative aspect-video w-full md:rounded-lg overflow-hidden">
                                 <Image  src={video.snippet.thumbnails.high.url}  alt={video.snippet.title}  layout="fill"  objectFit="cover"  className="w-full h-full" />
                             </div>
