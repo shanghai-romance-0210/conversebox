@@ -5,7 +5,6 @@ import Button from "./ui/Button";
 import { auth } from "@/lib/firebaseConfig";
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, User } from "firebase/auth";
 import { FiX } from "react-icons/fi";
-import { FaUser } from "react-icons/fa"; // Import FaUser icon
 import { doc, getDoc } from "firebase/firestore"; // Import Firestore functions
 import { db } from "@/lib/firebaseConfig"; // Import Firebase DB configuration
 
@@ -95,20 +94,18 @@ export default function Header() {
                     {user ? (
                         <>
                             <div className="relative">
-                                <button onClick={() => setShowMenu(!showMenu)} className="flex items-center justify-center rounded-lg h-10 w-10 aspect-square bg-purple-200 cursor-pointer text-purple-400">
-                                    <FaUser className="text-xl" />
-                                </button>
-                                <div className={`absolute right-0 mt-2 w-64 bg-white border border-gray-200 shadow-lg rounded-lg p-2 transform transition-all duration-300 ease-in-out ${showMenu ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}>
+                                <button onClick={() => setShowMenu(!showMenu)} className="flex items-center justify-center rounded-full h-8 w-8 aspect-square bg-gradient-to-br from-blue-400 via-purple-400 to-red-400 cursor-pointer" />
+                                <div className={`absolute right-0 mt-2 w-64 bg-white border border-gray-200 p-2 shadow-lg rounded-lg transform transition-all duration-300 ease-in-out ${showMenu ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}>
                                     <div>
-                                        <p>{username ? username : "ユーザー名が設定されていません"}</p>
+                                        <p>{username ? username : "Anonymous"}</p>
                                         <p className="text-sm text-gray-400 line-clamp-1">{user.email}</p>
                                     </div>
-                                    <div className="border-t border-gray-200 my-2" />
+                                    <div className="border-t border-gray-200 special-margin" />
                                     <Link href="/settings">
-                                        <p className="px-4 py-2 rounded-lg duration-200 hover:bg-gray-200">設定</p>
+                                        <p className="p-2 rounded-sm hover:bg-gray-200/50 text-sm text-gray-600">設定</p>
                                     </Link>
-                                    <div className="border-t border-gray-200 my-2" />
-                                    <Button onClick={handleLogout} variant="text" className="font-normal w-full text-left">ログアウト</Button>
+                                    <div className="border-t border-gray-200 special-margin" />
+                                    <button onClick={handleLogout} className="w-full cursor-pointer text-left p-2 rounded-sm hover:bg-gray-200/50 text-sm text-gray-600">ログアウト</button>
                                 </div>
                             </div>
                         </>

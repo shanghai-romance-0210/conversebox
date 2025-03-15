@@ -11,3 +11,7 @@ body {
   color: var(--foreground);
   font-family: "Inter", Arial, Helvetica, sans-serif;
 }
+
+.special-margin {
+  margin: 8px -8px;
+}

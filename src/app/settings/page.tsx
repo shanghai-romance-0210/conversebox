@@ -47,8 +47,8 @@ export default function Settings() {
         <div>
             <Header />
 
-            <div className="md:max-w-md w-full mx-auto py-8">
-                <h2 className="text-xl font-semibold">Settings</h2>
+            <div className="md:max-w-md w-full mx-auto p-8 md:px-0">
+                <h2 className="text-2xl font-semibold">Settings</h2>
 
                 <div className="mt-4">
                     <label htmlFor="username" className="text-sm mb-0.5">Username</label>
@@ -60,7 +60,7 @@ export default function Settings() {
                     />
                 </div>
 
-                <Button className="mt-8" onClick={handleSave} size="sm">Save</Button>
+                <Button className="mt-8" onClick={handleSave}>Save</Button>
             </div>
 
             <Footer />
