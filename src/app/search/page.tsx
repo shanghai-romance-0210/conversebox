@@ -54,11 +54,11 @@ export default function Search() {
     <div>
         <Header />
 
-        <div className="md:max-w-md w-full mx-auto pt-8">
+        <div className="md:w-1/2 mx-auto pt-8">
             <div className="flex items-center mx-4 md:mx-0">
                 <div className="w-full z-10 flex items-center bg-white h-10 px-2 focus-within:border-purple-400 focus-within:ring-2 ring-purple-200 border border-gray-200 rounded-lg duration-200">
                     <FiSearch className="mr-2 text-gray-400" />
-                    <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} className="w-full placeholder:text-sm outline-none" placeholder="動画を検索" />
+                    <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} className="h-10 w-full placeholder:text-sm outline-none" placeholder="動画を検索" />
                 </div>
                 <Button onClick={handleSearchClick} className="ml-2">検索</Button>
             </div>
@@ -66,7 +66,10 @@ export default function Search() {
 
         <div className="md:w-3/4 mx-auto py-8">
             {videos.length === 0 ? (
-                <Image src="/amico3.svg" alt="No videos" width={100} height={100} className="w-full md:w-1/3 mx-auto select-none opacity-75" />
+                <div className="flex flex-col items-center justify-center select-none">
+                  <p className="text-2xl mb-4 font-semibold text-gray-400">動画を検索しましょう</p>
+                  <Image src="/amico3.svg" alt="No videos" width={100} height={100} className="w-2/3 md:w-1/3" />
+                </div>
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4">
                     {videos.map((video) => (
